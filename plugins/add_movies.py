@@ -20,7 +20,7 @@ async def web_db(c: Client, m: Message):
         telegraph_account = telegraph.Telegraph()
         telegraph_account.create_account(short_name='YourAccountShortName')
         response = telegraph_account.upload_file(file_path)
-        image_url = "https://telegra.ph" + str(response[0])
+        image_url = f'"https://telegra.ph" + str(response[0])'
 
         id = collection.insert_one(
             {"caption": message.html,
