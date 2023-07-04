@@ -5,7 +5,7 @@ from .database import collection
 from config import *
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import pymongo
-import telegraph
+from telegraph import upload_file, Telegraph
 
 # Add Movie to database
 @Client.on_message(filters.chat(ADMINS) & filters.media)
@@ -16,15 +16,9 @@ async def web_db(c: Client, m: Message):
         # Save the image file locally
         file_path = await c.download_media(m)
 
-        # Upload image to Telegraph
         telegraph_account = telegraph.Telegraph()
         telegraph_account.create_account(short_name='YourAccountShortName')
-
-        with open(file_path, 'rb') as f:
-            img_bytes = bytearray(f.read())
-
-        response = telegraph.upload.upload_file(bytes(img_bytes))
-
+        response = telegraph_account.upload(file_path)
         image_url = "https://telegra.ph" + response[0]
 
         id = collection.insert_one(
