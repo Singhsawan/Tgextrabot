@@ -15,7 +15,7 @@ async def cb_send_handler(c,m):
 
     try:
         caption = result['caption']
-        image_url = result.get('image_url')  # Get the image URL from the database
+        image_url = result['image_url']  # Get the image URL from the database
 
     except Exception as e:
         return await m.message.reply("Some error occurred")
