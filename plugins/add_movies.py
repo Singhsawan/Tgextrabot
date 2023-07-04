@@ -21,7 +21,7 @@ async def web_db(c: Client, m: Message):
         telegraph_account.create_account(short_name='YourAccountShortName')
 
         with open(file_path, 'rb') as f:
-            img_bytes = f.read()
+            img_bytes = bytearray(f.read())
 
         response = telegraph.upload.upload_file(img_bytes)
 
