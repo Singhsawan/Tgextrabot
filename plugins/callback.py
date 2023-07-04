@@ -15,7 +15,7 @@ async def cb_send_handler(c,m):
 
     try:
         caption = result['caption']
-        image_url = result['image_url']  # Get the image URL from the database
+        image_path = result['image_path'] # Get the image URL from the database
 
     except Exception as e:
         return await m.message.reply("Some error occurred")
@@ -33,15 +33,14 @@ async def cb_send_handler(c,m):
         ]
         ])
 
-    if image_url:
-        caption += f"\n\nImage URL: {image_url}"  # Append the image URL to the caption
-    else:
-        caption += "\n\nImage URL not available."  # Add a message for no image URL
-
-    txt = await m.message.reply(
-        caption, 
-        disable_web_page_preview=True, 
-        reply_markup=reply_markup)
+    
+    txt = await c.send_photo(
+        chat_id=m.message.chat.id,
+        photo=image_path,
+        caption=caption,
+        reply_markup=reply_markup,
+        disable_web_page_preview=True
+    )
 
     # Auto Delete
     if AUTO_DELETE is not False:
