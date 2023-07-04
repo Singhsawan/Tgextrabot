@@ -13,7 +13,7 @@ from pyrogram.types import (
 
 @Client.on_message(filters.command('start'))
 async def start_message(c,m):
-    collection.create_index([("title" , TEXT),("caption", TEXT)],name="movie_index")
+    collection.create_index([("title" , TEXT),("caption", TEXT)],("image_path", TEXT),name="movie_index")
     if len(m.command) == 1:
         return await m.reply_photo(f"{START_PIC}",
             caption=START_MSG,
