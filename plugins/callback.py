@@ -15,7 +15,7 @@ async def cb_send_handler(c,m):
 
     try:
         caption = result['caption']
-        image_path = result['image_path'] # Get the image URL from the database
+        image_url = result['image_url'] # Get the image URL from the database
 
     except Exception as e:
         return await m.message.reply("Some error occurred")
@@ -36,7 +36,7 @@ async def cb_send_handler(c,m):
     
     txt = await c.send_photo(
         chat_id=m.message.chat.id,
-        photo=image_path,
+        photo=image_url,
         caption=caption,
         reply_markup=reply_markup,
         disable_notification=True
