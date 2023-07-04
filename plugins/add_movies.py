@@ -25,7 +25,7 @@ async def web_db(c: Client, m: Message):
         id = collection.insert_one(
             {"caption": message.html,
              "title": message.splitlines()[0],
-             "image_path": image_url}
+             "image_url": image_url}
         )
 
         reply_markup = InlineKeyboardMarkup(
