@@ -15,6 +15,7 @@ async def cb_send_handler(c,m):
 
     try:
         caption = result['caption']
+        image_url = result.get('image_url')  # Get the image URL from the database
 
     except Exception as e:
         return await m.message.reply("Some error occurred")
@@ -32,6 +33,10 @@ async def cb_send_handler(c,m):
         ]
         ])
 
+    if image_url:
+        caption += f"\n\nImage URL: {image_url}"  # Append the image URL to the caption
+    else:
+        caption += "\n\nImage URL not available."  # Add a message for no image URL
 
     txt = await m.message.reply(
         caption, 
