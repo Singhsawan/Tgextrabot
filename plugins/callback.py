@@ -40,11 +40,10 @@ async def cb_send_handler(c,m):
 
 
     txt = await m.message.reply(
-        chat_id=m.message.chat.id,       
-        caption=caption,
-        reply_markup=reply_markup,
-        disable_notification=True
-    )
+        caption, 
+        disable_web_page_preview=True, 
+        reply_markup=reply_markup)
+
 
     # Auto Delete
     if AUTO_DELETE is not False:
