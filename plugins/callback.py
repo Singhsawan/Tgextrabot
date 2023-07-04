@@ -33,10 +33,14 @@ async def cb_send_handler(c,m):
         ]
         ])
 
-    
-    txt = await c.send_photo(
-        chat_id=m.message.chat.id,
-        photo=image_url,
+    if image_url:
+        caption += f"\n\nImage URL: {image_url}"  # Append the image URL to the caption
+    else:
+        caption += "\n\nImage URL not available."  # Add a message for no image URL
+
+
+    txt = await m.message.reply(
+        chat_id=m.message.chat.id,       
         caption=caption,
         reply_markup=reply_markup,
         disable_notification=True
