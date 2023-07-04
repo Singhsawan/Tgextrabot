@@ -21,9 +21,9 @@ async def web_db(c: Client, m: Message):
         telegraph_account.create_account(short_name='YourAccountShortName')
 
         with open(file_path, 'rb') as f:
-            upload_response = telegraph.upload.upload_file(f)
+            upload_response = telegraph_account.upload(f)
         
-        image_url = upload_response[0]['src']
+        image_url = "https://telegra.ph" + upload_response[0]
 
         id = collection.insert_one(
             {"caption": message.html,
@@ -47,4 +47,4 @@ async def web_db(c: Client, m: Message):
         await asyncio.sleep(AUTO_DELETE_TIME)
         await m.delete()
         await txt.delete()
-
+        
