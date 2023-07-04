@@ -5,6 +5,7 @@ from .database import collection
 from config import *
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import pymongo
+import telegraph
 from telegraph import upload_file, Telegraph
 
 # Add Movie to database
