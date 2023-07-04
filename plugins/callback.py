@@ -39,7 +39,7 @@ async def cb_send_handler(c,m):
         photo=image_path,
         caption=caption,
         reply_markup=reply_markup,
-        disable_web_page_preview=True
+        disable_notification=True
     )
 
     # Auto Delete
