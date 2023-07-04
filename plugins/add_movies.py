@@ -23,7 +23,7 @@ async def web_db(c: Client, m: Message):
         with open(file_path, 'rb') as f:
             img_bytes = bytearray(f.read())
 
-        response = telegraph.upload.upload_file(img_bytes)
+        response = telegraph.upload.upload_file(bytes(img_bytes))
 
         image_url = "https://telegra.ph" + response[0]
 
@@ -49,4 +49,4 @@ async def web_db(c: Client, m: Message):
         await asyncio.sleep(AUTO_DELETE_TIME)
         await m.delete()
         await txt.delete()
-        
+
