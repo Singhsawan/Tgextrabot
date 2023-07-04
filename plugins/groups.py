@@ -38,7 +38,7 @@ async def group_handler(c: Client, m:Message):
 
             id = str(result['_id'])
             command = f"https://telegram.dog/{bot.username}?start={id}"
-            buttons += [InlineKeyboardButton(text=result['title'], url=command)],
+            buttons += [InlineKeyboardButton(result['title'], callback_data=f"send#{id}"), ],
 
         reply_markup=InlineKeyboardMarkup(buttons)
         await txt.edit(text=f"**Click On Your Movie/Series Name 👇👇 \n And start**", reply_markup=reply_markup)
