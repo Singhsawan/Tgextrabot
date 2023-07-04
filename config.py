@@ -10,7 +10,7 @@ ADMINS = list(int(i) for i in os.environ.get("ADMINS", "5313004751").split(" "))
 if OWNER_ID not in ADMINS:
     ADMINS.append(OWNER_ID)
 
-MONGODB = os.environ.get('MONGODB', 'mongodb+srv://Rishikesh001:Rishikesh001@cluster0.lqncnak.mongodb.net/?retryWrites=true&w=majority')
+MONGODB = os.environ.get('MONGODB', 'mongodb+srv://Rishi123:Rishi123@cluster0.1z4lrcb.mongodb.net/test')
 DATABASE_NAME = os.environ.get('DATABASE_NAME', 'lkfindbot') 
 COLLECTION_NAME = os.environ.get('COLLECTION_NAME', 'nvsinkbot')
 UPDATE_CHANNEL =  os.environ.get('UPDATE_CHANNEL', 'Rk_update')
