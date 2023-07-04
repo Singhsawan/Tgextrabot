@@ -16,10 +16,18 @@ async def web_db(c: Client, m: Message):
         # Save the image file locally
         file_path = await c.download_media(m)
 
+        # Upload image to Telegraph
+        telegraph_account = telegraph.Telegraph()
+        telegraph_account.create_account(short_name='YourAccountShortName')
+        response = telegraph_account.upload(file_path)
+
+        # Get the image URL from the response
+        image_url = response[0]['src']
+
         id = collection.insert_one(
             {"caption": message.html,
              "title": message.splitlines()[0],
-             "image_path": file_path}
+             "image_path": image_url}
         )
 
         reply_markup = InlineKeyboardMarkup(
@@ -39,4 +47,3 @@ async def web_db(c: Client, m: Message):
         await m.delete()
         await txt.delete()
 
-            
