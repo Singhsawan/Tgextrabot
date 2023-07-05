@@ -23,7 +23,7 @@ GROUP = os.environ.get('GROUP', 'Filmy_Fundas')
 FILEBOT = os.environ.get('FILEBOT', 'None')
 BOT_USERNAME = os.environ.get('BOT_USERNAME', 'Search_your_mov_bot')
 OWNER_USERNAME = os.environ.get('OWNER_USERNAME', 'J_shree_ram')
-HOWTO = os.environ.get('HOWTO', 'https://t.me/tgnvs/8')
+HOWTO = os.environ.get('HOWTO', 'https://t.me/Filmy_Fundas/1606')
 START_PIC = os.environ.get('START_PIC', 'https://graph.org/file/ff2999e57bf1ae1f99e7e.jpg')
 
 #  Replit Config
