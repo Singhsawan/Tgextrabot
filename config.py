@@ -11,7 +11,7 @@ if OWNER_ID not in ADMINS:
     ADMINS.append(OWNER_ID)
 
 MONGODB = os.environ.get('MONGODB', 'mongodb+srv://Test:Sawansingh24@cluster0.eicxbp9.mongodb.net/?retryWrites=true&w=majority')
-DATABASE_NAME = os.environ.get('DATABASE_NAME', 'lkfindbot') 
+DATABASE_NAME = os.environ.get('DATABASE_NAME', 'tezuo') 
 COLLECTION_NAME = os.environ.get('COLLECTION_NAME', 'nvsinkbot')
 UPDATE_CHANNEL =  os.environ.get('UPDATE_CHANNEL', 'Filmy_Fundas')
 USERNAME = UPDATE_CHANNEL
