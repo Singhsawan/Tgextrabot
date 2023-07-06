@@ -25,6 +25,8 @@ BOT_USERNAME = os.environ.get('BOT_USERNAME', 'Search_your_mov_bot')
 OWNER_USERNAME = os.environ.get('OWNER_USERNAME', 'Rk_botowner')
 HOWTO = os.environ.get('HOWTO', 'https://t.me/tgnvs/8')
 START_PIC = os.environ.get('START_PIC', 'https://graph.org/file/ff2999e57bf1ae1f99e7e.jpg')
+INDEXCHANNEL_ID = [-1001836895394] # Add multiple ids of channel for multiple index channels Example 👉 [-100123456789, -100987654321]
+
 
 #  Replit Config
 REPLIT_USERNAME = os.environ.get("REPLIT_USERNAME", None)
