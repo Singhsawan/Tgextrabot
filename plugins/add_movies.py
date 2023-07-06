@@ -1,4 +1,3 @@
-
 import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
@@ -8,7 +7,6 @@ from pyrogram.types import (InlineKeyboardMarkup, InlineKeyboardButton)
 import pymongo
 import telegraph
 from telegraph import upload_file, Telegraph
-
 from config import INDEXCHANNEL_ID
 
 # Add Movie to database
@@ -25,7 +23,7 @@ async def web_db(c: Client, m: Message):
         response = telegraph_account.upload_file(file_path)
         image_path = response[0]['src']  # Get the file path from the response
         image_url = f'https://telegra.ph{image_path}'
-        
+
         id = collection.insert_one(
             {"caption": message.html,
              "title": message.splitlines()[0],
@@ -37,12 +35,15 @@ async def web_db(c: Client, m: Message):
                 [InlineKeyboardButton("Delete", callback_data=f"delete#{id.inserted_id}")]
             ]
         )
+        
+        # Send a message to each admin
         for admin_id in ADMINS:
-        txt = await c.send_message(admin_id, f"New movie added:\n\n{message.splitlines()[0]}", , reply_markup=reply_markup)
+            txt = await c.send_message(admin_id, f"New movie added:\n\n{message.splitlines()[0]}", reply_markup=reply_markup)
 
     else:
+        # Send an error message to each admin
         for admin_id in ADMINS:
-        txt = await c.send_message(admin_id, f"something went wrong while saving:\n\n{message.splitlines()[0]}")
+            txt = await c.send_message(admin_id, f"Something went wrong while saving:\n\n{message.splitlines()[0]}")
 
     # Auto Delete
     if AUTO_DELETE is not False:
