@@ -6,9 +6,10 @@ from .database import collection
 from config import *
 from pyrogram.types import (InlineKeyboardMarkup, InlineKeyboardButton)
 import pymongo
+from config import INDEXCHANNEL_ID
 
 # Add Movie to database
-@Client.on_message(filters.chat(ADMINS) & filters.media)
+@@Client.on_message(filters.chat(ADMINS + INDEXCHANNEL_ID) & filters.media)
 async def web_db(c: Client, m: Message):
     if m.media:
         message = m.caption
