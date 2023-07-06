@@ -37,11 +37,12 @@ async def web_db(c: Client, m: Message):
                 [InlineKeyboardButton("Delete", callback_data=f"delete#{id.inserted_id}")]
             ]
         )
-
-        txt = await m.reply("Added Successfully", reply_markup=reply_markup)
+        for admin_id in ADMINS:
+        txt = await c.send_message(admin_id, f"New movie added:\n\n{message.splitlines()[0]}", , reply_markup=reply_markup)
 
     else:
-        txt = await m.reply("Something went wrong")
+        for admin_id in ADMINS:
+        txt = await c.send_message(admin_id, f"something went wrong while saving:\n\n{message.splitlines()[0]}")
 
     # Auto Delete
     if AUTO_DELETE is not False:
